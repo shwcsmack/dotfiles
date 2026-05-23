@@ -1,0 +1,15 @@
+#!/bin/bash
+# Mac packages — re-runs only when this file's hash changes
+# (hash check is automatic thanks to the run_onchange_ prefix)
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+brew update
+
+brew install \
+  starship git ripgrep fd fzf bat eza zoxide jq lazygit chezmoi \
+  neovim tmux zellij ghostty
+
+brew install --cask font-jetbrains-mono-nerd-font font-hack-nerd-font
+
+{{ end -}}
