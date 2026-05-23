@@ -1,0 +1,91 @@
+# ============================================================
+# THEME & FONT
+# ============================================================
+theme = Dracula
+
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 14
+
+# Optional: a bit more line-height feels less cramped
+adjust-cell-height = 10%
+
+# Make every theme color pair meet a minimum contrast ratio
+minimum-contrast = 1.1
+
+# ============================================================
+# WINDOW
+# ============================================================
+# A bit of breathing room around the text
+window-padding-x = 12
+window-padding-y = 12
+# Inherit padding color from background (otherwise it can look bordered)
+window-padding-color = background
+
+# Slightly translucent + blur — comment out if you prefer opaque
+background-opacity = 0.96
+background-blur-radius = 20
+
+# Start at a reasonable size every time
+window-width = 140
+window-height = 42
+
+# Hide tab/title bar; we'll use the multiplexer for splits
+# (uncomment if you want a minimal chromeless window)
+# macos-titlebar-style = hidden
+
+# ============================================================
+# CURSOR
+# ============================================================
+cursor-style = block
+cursor-style-blink = false
+
+# ============================================================
+# SHELL
+# ============================================================
+# Use your login shell (zsh from /opt/homebrew/bin)
+# Ghostty auto-detects $SHELL — only override if you want something custom
+# command = /opt/homebrew/bin/zsh
+
+# Enable shell integration for things like cmd+up/down to jump prompts
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ============================================================
+# MACOS BEHAVIOR
+# ============================================================
+# Make Option act as Meta/Alt in the terminal — important for tmux & nvim
+macos-option-as-alt = true
+
+# Disable proxy icon in titlebar (cleaner)
+macos-non-native-fullscreen = visible-menu
+
+# ============================================================
+# SCROLLBACK
+# ============================================================
+scrollback-limit = 10000000
+
+# ============================================================
+# KEYBINDS — keep these LIGHT
+# We let the multiplexer handle splits/windows.
+# These are just Ghostty-level shortcuts.
+# ============================================================
+# Cmd+T new tab, Cmd+W close, Cmd+1..9 switch — defaults are fine.
+
+# Quick scrollback search
+#keybind = cmd+f=open_search
+
+# Reset the terminal when something garbles output
+keybind = cmd+shift+r=reset
+
+# Reload config without restarting
+keybind = cmd+shift+comma=reload_config
+
+# Quick terminal — global Quake-style dropdown (toggle with cmd+`)
+# (Comment out if you don't want this.)
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+
+# ============================================================
+# THINGS NOT TO TOUCH
+# ============================================================
+# Don't override Ctrl-h/j/k/l — those are reserved for vim-tmux-navigator
+# Don't override Ctrl-a — that's our tmux prefix (Lesson 06)
