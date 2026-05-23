@@ -1,8 +1,9 @@
 #!/bin/bash
 # Mac packages — re-runs only when this file's hash changes
-# (hash check is automatic thanks to the run_onchange_ prefix)
+set -e
 
-{{ if eq .chezmoi.os "darwin" -}}
+# Clean up the dead fonts tap if it's still around
+brew untap homebrew/homebrew-cask-fonts 2>/dev/null || true
 
 brew update
 
@@ -10,6 +11,5 @@ brew install \
   starship git ripgrep fd fzf bat eza zoxide jq lazygit chezmoi \
   neovim tmux zellij ghostty
 
-brew install --cask font-jetbrains-mono-nerd-font font-hack-nerd-font
-
-{{ end -}}
+# --force lets this re-run even when fonts are already installed
+brew install --cask --force font-jetbrains-mono-nerd-font font-hack-nerd-font
