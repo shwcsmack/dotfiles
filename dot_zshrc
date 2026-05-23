@@ -14,8 +14,13 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
 autoload -Uz compinit && compinit
+
+# fzf must be sourced BEFORE fzf-tab so fzf-tab can override fzf's Tab binding
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+
+zinit light Aloxaf/fzf-tab
 
 # ---- HISTORY -------------------------------------------------
 HISTFILE=~/.zsh_history
@@ -101,9 +106,6 @@ extract() {
 }
 
 # ---- NAVIGATION ----------------------------------------------
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 export FZF_DEFAULT_OPTS="
   --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9
   --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9
