@@ -1,103 +1,181 @@
-# Dracula-themed starship prompt
-# Two-line prompt: info on top, character on the bottom (room to think)
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
-[](color_purple)\
+[](purple)\
 $os\
 $username\
-[](bg:color_pink fg:color_purple)\
+[](bg:cyan fg:purple)\
 $directory\
-[](fg:color_pink bg:color_cyan)\
+[](bg:pink fg:cyan)\
 $git_branch\
 $git_status\
-[](fg:color_cyan bg:color_bg3)\
-$nodejs\
+[](fg:pink bg:green)\
+$c\
 $rust\
-$python\
 $golang\
-[](fg:color_bg3 bg:color_bg1)\
-$docker_context\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:green bg:comment)\
+$conda\
+[](fg:comment bg:comment)\
+$time\
+[ ](fg:comment)\
 $cmd_duration\
-[ ](fg:color_bg1)\
-$line_break$character"""
+$line_break\
+$character"""
 
 palette = 'dracula'
 
-[palettes.dracula]
-color_fg0 = '#f8f8f2'
-color_bg1 = '#282a36'
-color_bg3 = '#44475a'
-color_purple = '#bd93f9'
-color_pink = '#ff79c6'
-color_cyan = '#8be9fd'
-color_green = '#50fa7b'
-color_yellow = '#f1fa8c'
-color_orange = '#ffb86c'
-color_red = '#ff5555'
-
 [os]
 disabled = false
-style = "bg:color_purple fg:color_fg0"
+style = "bg:purple fg:crust"
+
 [os.symbols]
-Macos = ""
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "bg:color_purple fg:color_fg0"
-style_root = "bg:color_red fg:color_fg0"
-format = '[ $user ]($style)'
+style_user = "bg:purple fg:crust"
+style_root = "bg:purple fg:crust"
+format = '[ $user]($style)'
 
 [directory]
-style = "fg:color_fg0 bg:color_pink"
+style = "bg:cyan fg:crust"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = " 󰈙 "
-"Downloads" = "  "
-"code" = "  "
-"projects" = "  "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
 
 [git_branch]
-symbol = ""
-style = "bg:color_cyan"
-format = '[[ $symbol $branch ](fg:color_bg1 bg:color_cyan)]($style)'
+symbol = ""
+style = "bg:pink"
+format = '[[ $symbol $branch ](fg:crust bg:pink)]($style)'
 
 [git_status]
-style = "bg:color_cyan"
-format = '[[($all_status$ahead_behind )](fg:color_bg1 bg:color_cyan)]($style)'
+style = "bg:pink"
+format = '[[($all_status$ahead_behind )](fg:crust bg:pink)]($style)'
 
 [nodejs]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol ($version) ](fg:color_fg0 bg:color_bg3)]($style)'
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
 
 [rust]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol ($version) ](fg:color_fg0 bg:color_bg3)]($style)'
-
-[python]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol ($version) ](fg:color_fg0 bg:color_bg3)]($style)'
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
 
 [golang]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol ($version) ](fg:color_fg0 bg:color_bg3)]($style)'
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[php]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[java]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[python]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
 
 [docker_context]
-symbol = ""
-style = "bg:color_bg1"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg1)]($style)'
+symbol = ""
+style = "bg:comment"
+format = '[[ $symbol( $context) ](fg:crust bg:comment)]($style)'
 
-[cmd_duration]
-min_time = 2_000
-style = "fg:color_yellow bg:color_bg1"
-format = '[ took $duration ]($style)'
+[conda]
+symbol = "  "
+style = "fg:crust bg:comment"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%_I:%M %p"
+style = "bg:comment"
+format = '[[  $time ](fg:crust bg:comment)]($style)'
+
+[line_break]
+disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol  = '[](bold fg:color_red)'
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:purple)'
+vimcmd_replace_symbol = '[❮](bold fg:purple)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:purple"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.dracula]
+
+pink = "#ff79c6"
+red = "#ff5555"
+yellow = "#f1fa8c"
+green = "#50fa7b"
+blue = "#644ac9"
+purple = "#bd93f9"
+cyan = "#8be9fd"
+comment = "#6272a4"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
